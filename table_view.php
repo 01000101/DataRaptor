@@ -33,7 +33,7 @@
 			<?php include_once('_nav.php'); ?>
 			
 			<div class="row">
-				<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
+				<div class="col-xs-12 col-lg-10 col-lg-offset-1">
 					<?php if( isset($error) && $error ) { ?> 
 						<div class="alert alert-danger alert-dismissible" role="alert">
 							<button type="button" class="close" data-dismiss="alert">
@@ -59,7 +59,15 @@
 							echo "<tr>";
 							for($col = 0; $col < count($dbColumns); $col++ ) {
 								$colName = $dbColumns[$col]->name;
-								echo "<td>$row[$colName]</td>";
+								
+								if( $colName === 'application' ||
+								    $colName === 'file_design' ||
+									$colName === 'file_consent' ) {
+									$item = "<a href="$row[$colName]">$row[$colName]</a>";
+								} else {
+									$item = $row[$colName];
+								}
+								echo "<td>$item</td>";
 							}
 							echo "</tr>";
 						} ?>
