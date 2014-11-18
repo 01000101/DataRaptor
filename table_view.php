@@ -8,8 +8,6 @@
 			$dbQuery = $db->query("SELECT * FROM " . $tname);
 			$dbNumRows = $dbQuery->num_rows;
 			$dbColumns = $dbQuery->fetch_fields();
-
-			var_dump($dbColumns);
 		} else {
 			$error = "Could not connect to the database";
 		}
@@ -44,7 +42,7 @@
 						</div>
 					<?php } ?>
 					
-					<h2 class="text-center">Abracadabra!</h2>
+					<h2 class="text-center">Abracadabra! Now viewing table "<?php echo $_GET['table']; ?>" on database "<?php echo $_SESSION['db_database']; ?>"</h2>
 					<br /><br />
 					
 					<table class="table table-striped">
