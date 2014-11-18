@@ -38,7 +38,7 @@
 					<div class="list-group">
 						<?php
 							while( ($dbTable = $dbQuery->fetch_array()) ) {
-								echo "<a href='table_view.php?table=$dbTable[0]' class='list-group-item'>$dbTable[0]</a>";
+								echo "<a href='table_view.php?table=$dbTable[0]' class='list-group-item list-group-item-info'>$dbTable[0]</a>";
 							}
 						?>
 					</div>
