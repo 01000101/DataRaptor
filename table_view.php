@@ -63,7 +63,7 @@
 								if( $colName === 'application' ||
 								    $colName === 'file_design' ||
 									$colName === 'file_consent' ) {
-									$item = "<a href=\"$row[$colName]\">$row[$colName]</a>";
+									$item = "<a href=\"$row[$colName]\" target=\"_blank\">Download</a>";
 								} else {
 									$item = $row[$colName];
 								}
