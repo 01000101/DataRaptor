@@ -4,7 +4,7 @@
 	
 	$db = db_init();
 	$dbName = $_SESSION['db_database'];
-	$dbQuery = $db->query('SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "$dbName"');
+	$dbQuery = $db->query("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = \"$dbName\"");
 ?>
 
 <!DOCTYPE html>
