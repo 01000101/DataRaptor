@@ -17,7 +17,7 @@
 			switch( $inDatabase ) {
 				case "rockon": {
 					$inDatabase = 'rockonfoundation';
-					$inServer = '172.16.2.12';
+					$inServer = 'localhost';
 				} break;
 				
 				default: {
