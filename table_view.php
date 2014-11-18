@@ -8,6 +8,9 @@
 			$dbNumRows = $dbQuery->num_rows;
 			$dbColumns = $dbQuery->fetch_fields();
 			$dbRows = $dbQuery->fetch_array();
+			
+			var_dump($dbColumns);
+			var_dump($dbRows);
 		} else {
 			$error = "Could not connect to the database";
 		}

@@ -6,6 +6,8 @@
 	$dbQuery = $db->query('SHOW TABLES');
 	$dbNumTables = $dbQuery->num_rows;
 	$dbTables = $dbQuery->fetch_array();
+	
+	var_dump($dbTables);
 ?>
 
 <!DOCTYPE html>
