@@ -50,7 +50,8 @@
 					<table class="table table-striped">
 						<tr>
 							<?php for($col = 0; $col < count($dbColumns); $col++ ) {
-								echo "<th>$dbColumns[$col]->name</th>";
+								$colName = $dbColumns[$col]->name;
+								echo "<th>$colName</th>";
 							} ?>
 						</tr>
 						
