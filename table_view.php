@@ -55,10 +55,10 @@
 							} ?>
 						</tr>
 						
-						<?php for($col = 0; $col < count($dbColumns); $col++ ) {
+						<?php while( ($row = $dbQuery->fetch_assoc()) ) {
 							echo "<tr>";
-							$colName = $dbColumns[$col]->name;
-							while( ($row = $dbQuery->fetch_assoc()) ) {
+							for($col = 0; $col < count($dbColumns); $col++ ) {
+								$colName = $dbColumns[$col]->name;
 								echo "<td>$row[$colName]</td>";
 							}
 							echo "</tr>";
