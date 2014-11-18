@@ -57,8 +57,9 @@
 						
 						<?php for($col = 0; $col < count($dbColumns); $col++ ) {
 							echo "<tr>";
-							while( ($row = $dbQuery->fetch_array()) ) {
-								echo "<td>$row[$col]</td>";
+							$colName = $dbColumns[$col]->name;
+							while( ($row = $dbQuery->fetch_assoc()) ) {
+								echo "<td>$row[$colName]</td>";
 							}
 							echo "</tr>";
 						} ?>
