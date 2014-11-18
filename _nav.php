@@ -7,7 +7,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#" style="padding: 0 !important;">
+					<a class="navbar-brand" href="/sql_view.php" style="padding: 0 !important;">
 						<img alt="DataRaptor" src="/style/images/logo.png" height="50">
 					</a>
 				</div>
@@ -15,7 +15,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<?php if( $_SESSION['current_db'] ) { ?>
+						<?php if( $_SESSION['db_database'] ) { ?>
 							<li><a href="/login.php">Change Database</a></li>
 						<?php } ?>
 					</ul>
