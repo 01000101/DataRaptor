@@ -3,8 +3,8 @@
 	require_once('_database.php');
 	
 	$db = db_init();
-	$dbQuery = $db->query('SHOW TABLES');
-	$dbNumTables = $dbQuery->num_rows;
+	$dbName = $_SESSION['db_database'];
+	$dbQuery = $db->query('SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "$dbName"');
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +37,25 @@
 					
 					<div class="list-group">
 						<?php
-							while( ($dbTable = $dbQuery->fetch_array()) ) {
-								echo "<a href='table_view.php?table=$dbTable[0]' class='list-group-item list-group-item-info'>$dbTable[0]</a>";
+							while( ($row = $dbQuery->fetch_assoc()) ) {
+								$tableName = $row['TABLE_NAME'];
+								$tableRowCount = $row['TABLE_ROWS'];
+								$tableDescription = $row['TABLE_COMMENT'];
+								
+								echo "<a href='table_view.php?table=$tableName' class='list-group-item active'>";
+								echo "<h4 class='list-group-item-heading'>$tableName</h4>";
+								echo "<p class='list-group-item-text'>Number of entries: $tableRowCount<br />Description: $tableDescription</p>";
 							}
 						?>
 					</div>
+					
+					
+					<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">List group item heading</h4>
+    <p class="list-group-item-text">...</p>
+  </a>
+</div>
 				</div>
 			</div>
 		</div>
