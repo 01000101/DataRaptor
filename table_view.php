@@ -7,10 +7,8 @@
 			$dbQuery = $db->query("SELECT * FROM $db->real_escape_string($_GET['table'])");
 			$dbNumRows = $dbQuery->num_rows;
 			$dbColumns = $dbQuery->fetch_fields();
-			$dbRows = $dbQuery->fetch_array();
-			
+
 			var_dump($dbColumns);
-			var_dump($dbRows);
 		} else {
 			$error = "Could not connect to the database";
 		}
@@ -57,8 +55,8 @@
 						
 						<?php for($col = 0; $col < count($dbColumns); $col++ ) {
 							echo "<tr>";
-							for($row = 0; $row < $dbNumRows; $row++ ) {
-								echo "<td>$dbRows[$row][$col]</td>";
+							while( ($row = $dbQuery->fetch_array()) ) {
+								echo "<td>$row[$col]</td>";
 							}
 							echo "</tr>";
 						} ?>

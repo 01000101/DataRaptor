@@ -5,9 +5,6 @@
 	$db = db_init();
 	$dbQuery = $db->query('SHOW TABLES');
 	$dbNumTables = $dbQuery->num_rows;
-	$dbTables = $dbQuery->fetch_array();
-	
-	var_dump($dbTables);
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +37,8 @@
 					
 					<div class="list-group">
 						<?php
-							for($i = 0; $i < $dbNumTables; $i++) {
-								echo "<a href='table_view.php?table=$dbTables[$i]' class='list-group-item'>$dbTables[$i]</a>";
+							while( ($dbTable = $dbQuery->fetch_array()) ) {
+								echo "<a href='table_view.php?table=$dbTable[0]' class='list-group-item'>$dbTable[0]</a>";
 							}
 						?>
 					</div>
