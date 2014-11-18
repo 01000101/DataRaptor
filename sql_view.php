@@ -39,7 +39,7 @@
 					<div class="list-group">
 						<?php
 							for($i = 0; $i < $dbNumTables; $i++) {
-								echo "<a href='#$dbTables[0]' class='list-group-item'>$dbTables[0]</a>";
+								echo "<a href='table_view.php?table=$dbTables[$i]' class='list-group-item'>$dbTables[$i]</a>";
 							}
 						?>
 					</div>
