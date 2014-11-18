@@ -4,7 +4,8 @@
 	
 	if( isset($_GET['table']) && $_GET['table'] !== "" ) {
 		if( ($db = db_init()) != null ) {
-			$dbQuery = $db->query("SELECT * FROM $db->real_escape_string($_GET['table'])");
+			$tname = $db->real_escape_string($_GET['table']);
+			$dbQuery = $db->query("SELECT * FROM " . $tname);
 			$dbNumRows = $dbQuery->num_rows;
 			$dbColumns = $dbQuery->fetch_fields();
 
