@@ -1,14 +1,14 @@
 <?php
-	function db_init($user, $pass, $database) { 
+	function db_init() { 
 		try {
-			$user = mysqli_escape_string($user);
-			$pass = mysqli_escape_string($pass);
-			$database = mysqli_escape_string($database);
 			
-			$db = new mysqli('localhost', $user, $pass, $database);
+			$db = new mysqli($_SESSION['db_server'],
+							 $_SESSION['db_username'],
+							 $_SESSION['db_password'],
+							 $_SESSION['db_database']);
 			
 			if( $db->connect_error ) {
-				throw new Exception("mysqli(localhost) failed");
+				throw new Exception("mysqli() failed");
 			}
 			
 			return $db;

@@ -1,19 +1,22 @@
 <?php // POST handling
-	include_once('_session.php');
+	session_start();
 
 	$error = null;
-	$inServer = '0.0.0.0';
+	$inServer = 'localhost';
 	
 	if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' &&
 		isset($_POST['submit_btn']) ) {
 		try {
+			// Basic sanitization
 			$inUsername = strip_tags(trim($_POST['inUsername']));
 			$inPassword = strip_tags(trim($_POST['inPassword']));
 			$inDatabase = strip_tags(trim($_POST['inDatabase']));
 			
+			// Make sure all fields are filled in
 			if( $inUsername === "" || $inPassword === "" || $inDatabase === "" )
 				throw new ErrorException("All fields are required. Please try again.");
 			
+			// Set up variables based on user input
 			switch( $inDatabase ) {
 				case "rockon": {
 					$inDatabase = 'rockonfoundation';
@@ -25,13 +28,19 @@
 				} break;
 			}
 			
+			// Establish a connection to the database
 			$mysqli = new mysqli($inServer, $inUsername, $inPassword, $inDatabase);
 			
+			// Show the user an error message on failure to connect
 			if( $mysqli->connect_error )
 				throw new ErrorException($mysqli->connect_error);
 			
+			$_SESSION['db_username'] = $inUsername;
+			$_SESSION['db_password'] = $inPassword;
+			$_SESSION['db_database'] = $inDatabase;
+			$_SESSION['db_server']   = $inServer;
 			
-			
+			header('Location: sql_view.php');
 		} catch( Exception $ex ) {
 			$error = $ex->getMessage();
 		}
