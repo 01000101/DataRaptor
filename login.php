@@ -1,5 +1,6 @@
 <?php // POST handling
 	session_start();
+	$_SESSION['db_database'] = null;
 
 	$error = null;
 	$inServer = 'localhost';
