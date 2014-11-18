@@ -45,7 +45,7 @@
 								echo "<a href='table_view.php?table=$tableName' class='list-group-item active'>";
 								echo "<h4 class='list-group-item-heading'>$tableName</h4>";
 								echo "<p class='list-group-item-text'>Number of entries: $tableRowCount<br />Description: $tableDescription</p>";
-								echo "</a>"
+								echo "</a>";
 							}
 						?>
 					</div>
